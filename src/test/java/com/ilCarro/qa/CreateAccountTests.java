@@ -22,12 +22,11 @@ public class CreateAccountTests extends TestBase {
         //click on SignUp button
         //wd.findElement(By.cssSelector("[href='/signup']")).click();
         click(By.cssSelector("[href='/signup']"));
-        Assert.assertTrue(isElementPresent(By.cssSelector("form.signup__fields")));
 
         //fill registration form
         type(By.cssSelector("#first_name"), "AS");
         type(By.cssSelector("#second_name"), "FV");
-        type(By.cssSelector("#email"), "oo@aa.com");
+        type(By.cssSelector("#email"), "oo@aa2.com");
         type(By.cssSelector("#password"), "1234567Pp");
 
 

@@ -22,6 +22,8 @@ public class LoginTests extends TestBase {
     @Test
     public void loginRegisteredUserPositiveTest(){
         //oo@aa.com
+        //oo@aa1.com
+        //oo@aa2.com
         //fill login form
         type(By.name("email"), "oo@aa.com");
         type(By.name("password"), "1234567Pp");
