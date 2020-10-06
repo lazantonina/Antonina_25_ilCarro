@@ -25,6 +25,7 @@ public class FillCarForms extends TestBase {
        type(By.cssSelector(".year"), "2015");
        type(By.cssSelector(".engine"), "2.0");
        type(By.cssSelector(".fuel_consumption"), "10");
+       type(By.cssSelector(".fuel"), "diesel");
        type(By.cssSelector(".transmition"), "AT");
        type(By.cssSelector(".wd"), "4WD");
        type(By.cssSelector(".horsepower"), "193");
@@ -34,7 +35,7 @@ public class FillCarForms extends TestBase {
        type(By.cssSelector(".class"), "A");
 
        //fill the fields About
-       type(By.cssSelector("cols='30'"), "the color is marrakesh");
+       type(By.cssSelector("placeholder='About (max 500 chars)'"), "the color is marrakesh");
        type(By.cssSelector(".type_feature"), "with wifi");
        type(By.cssSelector(".price"), "250");
 
