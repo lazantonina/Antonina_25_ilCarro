@@ -18,42 +18,51 @@ public class CreateAccountTests extends TestBase {
     }
 
     @Test
-    public void testSignUp(){
-        //click on SignUp button
-        //wd.findElement(By.cssSelector("[href='/signup']")).click();
+    public void testSignUp() throws InterruptedException {
         click(By.cssSelector("[href='/signup']"));
+        Assert.assertTrue(isElementPresent(By.cssSelector("form.signup__fields")));
+        fillRegistrationForm(new User()
+                .withFirstName("AS")
+                .withSecondName("FV")
+                .withEmail("oo@aa4.com")
+                .withPassword("1234567Pp"));
 
-        //fill registration form
-        type(By.cssSelector("#first_name"), "AS");
-        type(By.cssSelector("#second_name"), "FV");
-        type(By.cssSelector("#email"), "oo@aa2.com");
-        type(By.cssSelector("#password"), "1234567Pp");
-
-
-//        wd.findElement(By.cssSelector("#second_name")).click();
-//        wd.findElement(By.cssSelector("#second_name")).clear();
-//        wd.findElement(By.cssSelector("#second_name")).sendKeys("FV");
-
-//        wd.findElement(By.cssSelector("#email")).click();
-//        wd.findElement(By.cssSelector("#email")).clear();
-//        wd.findElement(By.cssSelector("#email")).sendKeys("oo@aa.com");
-
-//        wd.findElement(By.cssSelector("#password")).click();
-//        wd.findElement(By.cssSelector("#password")).clear();
-//        wd.findElement(By.cssSelector("#password")).sendKeys("1234567Pp");
-
-        //wd.findElement(By.cssSelector("#check_policy")).click();
         click(By.cssSelector("#check_policy"));
-
+        pause(2000);
         //click submit button
-
         submitForm();
-
-
         //check, login form displayed
         Assert.assertTrue(isLoginFormPresent());
 
     }
 
+    @Test
+    public void testSignUpWithoutPassword() throws InterruptedException {
+        click(By.cssSelector("[href='/signup']"));
+        Assert.assertTrue(isElementPresent(By.cssSelector("form.signup__fields")));
+        fillRegistrationForm(new User()
+                .withFirstName("Tina")
+                .withSecondName("Terner")
+                .withEmail("Tina@terner1.com"));
+
+        click(By.cssSelector("#check_policy"));
+        pause(3000);
+        //click submit button
+        submitForm();
+        //check, login form displayed
+        Assert.assertTrue(isLoginFormPresent());
+
+    }
+
+    public void fillRegistrationForm(User user) {
+        type(By.name("first_name"), user.getFirstName());
+        type(By.name("second_name"), user.getSecondName());
+        type(By.name("email"), user.getEmail());
+        type(By.name("password"), user.getPassword());
+    }
+
+    public void pause(int millis) throws InterruptedException {
+        Thread.sleep(millis);
+    }
 
 }

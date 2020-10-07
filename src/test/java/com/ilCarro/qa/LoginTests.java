@@ -1,6 +1,8 @@
 package com.ilCarro.qa;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -24,14 +26,20 @@ public class LoginTests extends TestBase {
         //oo@aa.com
         //oo@aa1.com
         //oo@aa2.com
-        //fill login form
-        type(By.name("email"), "oo@aa.com");
-        type(By.name("password"), "1234567Pp");
+        fillLoginForm(new User().withEmail("oo@aa.com").withPassword("1234567Pp"));
 
-        //submit login
         submitForm();
-
         //Assert userLoggedIn
+        Assert.assertTrue(isUserLoggedIn());
+        String email = wd.findElement(By.cssSelector("[href='/account']")).getText();
+        System.out.println(email);
+        Assert.assertEquals(email, "oo@aa.com");
+
+    }
+
+    public void fillLoginForm(User user) {
+        type(By.name("email"), user.getEmail());
+        type(By.name("password"), user.getPassword());
 
     }
 }
