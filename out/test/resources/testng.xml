@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Regression" verbose="1" >
+    <test name="Regression" >
+        <classes>
+            <class name="com.ilCarro.qa.CreateAccountTests" >
+                <methods>
+                    <exclude name=".OpenHomePageTests.*"/>
+                </methods>
+            </class>
+            <class name="com.ilCarro.qa.OpenHomePageTests" />
+        </classes>
+    </test>
+
+
+</suite>

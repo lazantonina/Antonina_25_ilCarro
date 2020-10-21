@@ -1,6 +1,5 @@
 package com.ilCarro.qa;
 
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -11,58 +10,51 @@ public class CreateAccountTests extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions(){
-        if(!isSignUpTabPresentInHeader()){   //sign up not present
-            logOut();
+        if(!app.getHeader().isSignUpTabPresentInHeader()){   //sign up not present
+            app.getUser().logOut();
 //            wd.findElement(By.xpath("//a[contains(.,'login')]")).click();
         }
     }
 
     @Test
     public void testSignUp() throws InterruptedException {
-        click(By.cssSelector("[href='/signup']"));
-        Assert.assertTrue(isElementPresent(By.cssSelector("form.signup__fields")));
-        fillRegistrationForm(new User()
+        app.getUser().openRegistrationFormFormHeader();
+        Assert.assertTrue(app.getUser().isRegistrationFormOpened());
+        app.getUser().fillRegistrationForm(new User()
                 .withFirstName("AS")
                 .withSecondName("FV")
-                .withEmail("oo@aa4.com")
+                .withEmail("oo@aa6.com")
                 .withPassword("1234567Pp"));
 
-        click(By.cssSelector("#check_policy"));
+        app.getUser().selectPolicyCheckBox();
         pause(2000);
         //click submit button
-        submitForm();
+        app.getCar().submitForm();
         //check, login form displayed
-        Assert.assertTrue(isLoginFormPresent());
+        Assert.assertTrue(app.getUser().isLoginFormPresent());
 
     }
 
-    @Test
-    public void testSignUpWithoutPassword() throws InterruptedException {
-        click(By.cssSelector("[href='/signup']"));
-        Assert.assertTrue(isElementPresent(By.cssSelector("form.signup__fields")));
-        fillRegistrationForm(new User()
-                .withFirstName("Tina")
-                .withSecondName("Terner")
-                .withEmail("Tina@terner1.com"));
-
-        click(By.cssSelector("#check_policy"));
-        pause(3000);
-        //click submit button
-        submitForm();
-        //check, login form displayed
-        Assert.assertTrue(isLoginFormPresent());
-
-    }
-
-    public void fillRegistrationForm(User user) {
-        type(By.name("first_name"), user.getFirstName());
-        type(By.name("second_name"), user.getSecondName());
-        type(By.name("email"), user.getEmail());
-        type(By.name("password"), user.getPassword());
-    }
+//    @Test
+//    public void testSignUpWithoutPassword() throws InterruptedException {
+//        app.openRegistrationFormFormHeader();
+//        Assert.assertTrue(app.isRegistrationFormOpened());
+//        app.fillRegistrationForm(new User()
+//                .withFirstName("Tina")
+//                .withSecondName("Terner")
+//                .withEmail("Tina@terner1.com"));
+//
+//        app.selectPolicyCheckBox();
+//        pause(3000);
+//
+//        app.getCar().submitForm();
+//
+//        Assert.assertTrue(app.isLoginFormPresent());
+//
+//    }
 
     public void pause(int millis) throws InterruptedException {
-        Thread.sleep(millis);
+        app.getCar().pause(millis);
     }
 
 }
