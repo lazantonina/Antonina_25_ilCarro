@@ -1,4 +1,4 @@
-package com.ilCarro.qa;
+package com.ilCarro.qa.framework;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -13,10 +13,6 @@ public class HelperBase {
 
     public HelperBase(WebDriver wd) {
         this.wd = wd;
-    }
-
-    public void jumpToFooter(){
-        wd.findElement(By.cssSelector("body")).sendKeys(Keys.COMMAND, Keys.END);
     }
 
     public boolean isElementPresent(By locator){
@@ -34,7 +30,6 @@ public class HelperBase {
     }
 
     public void type(By locator, String text) {
-        //wd.findElement(locator).click();
         if(text != null){
             click(locator);
             wd.findElement(locator).clear();
@@ -48,13 +43,10 @@ public class HelperBase {
         wd.findElement(locator).click();
     }
 
-    public void submitForm(){
-        new WebDriverWait(wd, 15).until(ExpectedConditions.elementToBeClickable(By.cssSelector("[type='submit']"))).click();
+    public void submitForm() throws InterruptedException {
+        Thread.sleep(2000);
+        wd.findElement(By.cssSelector("[type='submit']")).click();
 
-    }
-
-    public void pause(int millis) throws InterruptedException {
-       Thread.sleep(millis);
     }
 
 }

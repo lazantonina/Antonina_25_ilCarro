@@ -2,6 +2,12 @@ plugins {
     id 'java'
 }
 
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
 group 'org.example'
 version '1.0-SNAPSHOT'
 
@@ -14,6 +20,11 @@ dependencies {
     implementation 'org.testng:testng:7.1.0'
 }
 
-test{
-    useTestNG()
-}
+task testRegr(type:Test){
+    useTestNG {
+        suites 'src/test/resources/testng.xml'
+    }
+        if(project.hasProperty('browser')){
+            systemProperty 'browser', "${browser}"
+        }
+    }

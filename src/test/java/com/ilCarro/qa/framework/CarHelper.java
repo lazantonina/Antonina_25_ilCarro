@@ -1,23 +1,12 @@
-package com.ilCarro.qa;
+package com.ilCarro.qa.framework;
 
+import com.ilCarro.qa.model.Car;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class HeaderHelper extends HelperBase{
-    public HeaderHelper(WebDriver wd) {
+public class CarHelper extends HelperBase {
+    public CarHelper(WebDriver wd) {
         super(wd);
-    }
-
-    public boolean isSignUpTabPresentInHeader() {
-        return isElementPresent(By.cssSelector("[href='/signup']"));
-    }
-
-    public void clickLoginTabOnHeader() {
-        click(By.cssSelector("[href='/login']"));
-    }
-
-    public String getEmailFromHeader() {
-        return wd.findElement(By.cssSelector("[href='/account']")).getText();
     }
 
     public boolean isFindCarFormPresent(){
@@ -29,11 +18,11 @@ public class HeaderHelper extends HelperBase{
         return isElementPresent2(By.cssSelector(".Main_mainpage__find_your_car__AHLkw form"));
     }
 
-    public void openAddCarFormHeader() {
-       click(By.cssSelector(".header__nav [href='/car']"));
-    }
+//    public void openAddCarFormHeader() {
+//       click(By.cssSelector(".header__nav [href='/car']"));
+//    }
 
-    public void toFillCarForms(Car car) {
+    public void fillAddCarForm(Car car) {
        type(By.cssSelector(".country"), car.getCountry());
        type(By.cssSelector(".address"), car.getAddress());
        type(By.cssSelector(".distance_included"), car.getDistance());
@@ -51,7 +40,7 @@ public class HeaderHelper extends HelperBase{
        type(By.cssSelector(".doors"), car.getDoors());
        type(By.cssSelector(".seats"), car.getSeats());
        type(By.cssSelector(".class"), car.getAutoClass());
-       type(By.name("about"), car.getAbout());
+       type(By.cssSelector("[name='about']"), car.getAbout());
        type(By.cssSelector(".type_feature"), car.getFeature());
        type(By.cssSelector(".price"), car.getPrice());
     }
