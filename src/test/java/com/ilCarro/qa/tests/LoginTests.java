@@ -20,7 +20,7 @@ public class LoginTests extends TestBase {
         //oo@aa.com
         //oo@aa1.com
         //oo@aa2.com
-        app.session().login("oo@aa7.co", "1234568Pp");
-        
+        app.session().login("oo@aa7.com", "1234568Pp");
+
     }
 }
