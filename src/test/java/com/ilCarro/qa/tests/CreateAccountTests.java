@@ -21,7 +21,7 @@ public class CreateAccountTests extends TestBase {
         app.session().fillRegistrationForm(new User()
                 .setfName("AS")
                 .setlName("FV")
-                .setEmail("oo@aa8.co")
+                .setEmail("oo@aa9.co")
                 .setPassword("1234568Pp"));
         //click submit button
         app.session().submitForm();
