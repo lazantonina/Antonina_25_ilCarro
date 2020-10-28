@@ -4,6 +4,7 @@ import com.ilCarro.qa.model.Car;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class AddCarTests extends TestBase {
@@ -48,6 +49,18 @@ public class AddCarTests extends TestBase {
               .setFeature("with wifi")
               .setPrice("250"));
       app.car().submitForm();
+
+   }
+   @Test(dataProvider = "validCarFromCSV", dataProviderClass = DataProviders.class)
+   public void testFormLetTheCarWorkFromDataProviderCSV(Car car) throws InterruptedException {
+       //app.header().click(By.cssSelector(".let-carwork-style_let_car__location__30BIh"));
+       //app.header().click(By.cssSelector("[href='/car']"));
+       app.header().addCar();
+
+       //".header__nav [href='/car']"
+
+       app.car().fillAddCarForm(car);
+       app.car().submitForm();
 
    }
 }
