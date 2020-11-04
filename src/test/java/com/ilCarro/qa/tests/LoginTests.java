@@ -21,6 +21,7 @@ public class LoginTests extends TestBase {
         //oo@aa1.com
         //oo@aa2.com
         app.session().login("oo@aa7.com", "1234568Pp");
+        //Assert.assertTrue(app.session().isUserLoggedIn());
 
     }
 }

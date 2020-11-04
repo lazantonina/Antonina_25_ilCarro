@@ -1,11 +1,12 @@
 package com.ilCarro.qa.framework;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
+import com.google.common.io.Files;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.NoSuchElementException;
 
 public class HelperBase {
@@ -47,6 +48,17 @@ public class HelperBase {
         Thread.sleep(2000);
         wd.findElement(By.cssSelector("[type='submit']")).click();
 
+    }
+
+    public String takeScreenshot(){
+        File tmp = ((TakesScreenshot)wd).getScreenshotAs(OutputType.FILE);
+        File screenshot = new File("screenshot-" + System.currentTimeMillis() + ".png");
+        try{
+            Files.copy(tmp, screenshot);
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        return screenshot.getAbsolutePath();
     }
 
 }
