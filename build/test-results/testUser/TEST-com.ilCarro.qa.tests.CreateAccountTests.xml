@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.ilCarro.qa.tests.CreateAccountTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-25T18:13:46" hostname="Antoninas-MacBook-Pro.local" time="3.148">
+  <properties/>
+  <testcase name="testSignUp" classname="com.ilCarro.qa.tests.CreateAccountTests" time="3.148"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
