@@ -13,7 +13,7 @@ public class AddCarTests extends TestBase {
     public void ensurePreconditions() throws InterruptedException {
 
         if (!app.session().isUserLoggedIn()) {
-            app.session().login("oo@aa7.co", "1234568Pp");
+            app.session().login("oo@aa7.com", "1234568Pp");
         }
 
     }
@@ -51,16 +51,16 @@ public class AddCarTests extends TestBase {
       app.car().submitForm();
 
    }
-   @Test(dataProvider = "validCarFromCSV", dataProviderClass = DataProviders.class)
-   public void testFormLetTheCarWorkFromDataProviderCSV(Car car) throws InterruptedException {
-       //app.header().click(By.cssSelector(".let-carwork-style_let_car__location__30BIh"));
-       //app.header().click(By.cssSelector("[href='/car']"));
-       app.header().addCar();
-
-       //".header__nav [href='/car']"
-
-       app.car().fillAddCarForm(car);
-       app.car().submitForm();
-
-   }
+//   @Test(dataProvider = "validCarFromCSV", dataProviderClass = DataProviders.class)
+//   public void testFormLetTheCarWorkFromDataProviderCSV(Car car) throws InterruptedException {
+//       //app.header().click(By.cssSelector(".let-carwork-style_let_car__location__30BIh"));
+//       //app.header().click(By.cssSelector("[href='/car']"));
+//       app.header().addCar();
+//
+//       //".header__nav [href='/car']"
+//
+//       app.car().fillAddCarForm(car);
+//       app.car().submitForm();
+//
+//   }
 }

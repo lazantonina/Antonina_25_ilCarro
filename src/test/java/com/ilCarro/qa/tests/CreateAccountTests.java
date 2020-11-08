@@ -30,43 +30,43 @@ public class CreateAccountTests extends TestBase {
     public void testSignUp() throws InterruptedException {
         app.header().clickSignUp();
         app.session().fillRegistrationForm(new User()
-                .setfName("AS")
-                .setlName("FV")
-                .setEmail("oo@aa10.com")
-                .setPassword("1234568Pp"));
+                .setfName("SA")
+                .setlName("VF")
+                .setEmail("aa@mm10.com")
+                .setPassword("1234568Mm"));
         //click submit button
         app.session().submitForm();
         //check, login form displayed
         Assert.assertTrue(app.session().isLoginFormPresent());
     }
 
-    @Test(dataProvider = "validUser", dataProviderClass = DataProviders.class)
-    public void testSignUpFromDataProvider(String fName, String lName, String email, String password) throws InterruptedException {
-        app.header().clickSignUp();
-        app.session().fillRegistrationForm(new User()
-                .setfName(fName)
-                .setlName(lName)
-                .setEmail(email)
-                .setPassword(password));
-        //click submit button
-        app.session().submitForm();
-        //check, login form displayed
-        logger.info("Login form present. Actual result: " + app.session().isLoginFormPresent()
-                + "  Expected result is: true");
-        Assert.assertTrue(app.session().isLoginFormPresent());
+//    @Test(dataProvider = "validUser", dataProviderClass = DataProviders.class)
+//    public void testSignUpFromDataProvider(String fName, String lName, String email, String password) throws InterruptedException {
+//        app.header().clickSignUp();
+//        app.session().fillRegistrationForm(new User()
+//                .setfName(fName)
+//                .setlName(lName)
+//                .setEmail(email)
+//                .setPassword(password));
+//        //click submit button
+//        app.session().submitForm();
+//        //check, login form displayed
+//        logger.info("Login form present. Actual result: " + app.session().isLoginFormPresent()
+//                + "  Expected result is: true");
+//        Assert.assertTrue(app.session().isLoginFormPresent());
+//
+//    }
 
-    }
-
-    @Test(dataProvider = "validUserFromCSV", dataProviderClass = DataProviders.class)
-    public void testSignUpFromCSVDataProvider(User user) throws InterruptedException {
-        app.header().clickSignUp();
-        app.session().fillRegistrationForm(user);
-        //click submit button
-        app.session().submitForm();
-        //check, login form displayed
-        logger.info("Login form present. Actual result: " + app.session().isLoginFormPresent()
-                + "  Expected result is: true");
-        Assert.assertTrue(app.session().isLoginFormPresent());
-
-    }
+//    @Test(dataProvider = "validUserFromCSV", dataProviderClass = DataProviders.class)
+//    public void testSignUpFromCSVDataProvider(User user) throws InterruptedException {
+//        app.header().clickSignUp();
+//        app.session().fillRegistrationForm(user);
+//        //click submit button
+//        app.session().submitForm();
+//        //check, login form displayed
+//        logger.info("Login form present. Actual result: " + app.session().isLoginFormPresent()
+//                + "  Expected result is: true");
+//        Assert.assertTrue(app.session().isLoginFormPresent());
+//
+//    }
 }
